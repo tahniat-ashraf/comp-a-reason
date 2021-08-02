@@ -29,3 +29,8 @@ To run your application:
 * https://gitter.im/eclipse-vertx/vertx-users[Vert.x Gitter]
 
 
+Instructions:
+
+mvn clean package exec:java
+
+

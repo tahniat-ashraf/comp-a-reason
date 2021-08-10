@@ -1,6 +1,6 @@
 ## How to run
 1. Run docker<br/>
-`docker-compose up -d`
+`docker compose up -d`
 2. To get bash shell in the mongodb container<br/>
 `docker exec -it compareason-mongodb bash`
 3. use mongo<br/>

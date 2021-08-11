@@ -6,6 +6,7 @@ import io.vertx.core.impl.logging.Logger;
 import io.vertx.core.impl.logging.LoggerFactory;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.web.client.WebClientOptions;
 import io.vertx.reactivex.core.AbstractVerticle;
 import io.vertx.reactivex.ext.web.Router;
 import io.vertx.reactivex.ext.web.RoutingContext;
@@ -23,7 +24,7 @@ public class ApiVerticle extends AbstractVerticle {
   public void start(Promise<Void> promise) throws Exception {
 
     var mongoClient = new MongoClientService();
-    var webclient = WebClient.create(vertx);
+    var webclient = WebClient.create(vertx, new WebClientOptions().setMaxPoolSize(100));
     Router router = Router.router(vertx);
     router.route().handler(BodyHandler.create());
     router.get("/posts-mongo").handler(routingContext -> handleMongoRequest(routingContext, mongoClient)).failureHandler(this::failureHandler);
